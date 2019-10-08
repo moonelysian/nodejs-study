@@ -1,9 +1,9 @@
 const { Router } = require('express');
-const auth = require('../middlewares/auth')
+//const auth = require('../middlewares/auth')
 
 const router = Router();
 
 // middleware
-router.use(auth);
+//router.use(auth);
 
 module.exports = router;
