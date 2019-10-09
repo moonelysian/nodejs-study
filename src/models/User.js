@@ -1,14 +1,15 @@
 class User{
-    constructor(id, name, block=false, waiting=false, admin=false){
+    
+    constructor(id, name, admin, block=false, waiting=false){
         this.id = id; //사용자 id
         this.name = name; //사용자 이름
+        this.admin = admin; //관리자
         this.block = block; //차단
         this.waiting = waiting; //대기
-        this.admin = admin; //관리자
     }
 
-    static newInstance(id, name){
-        return new User(id, name);
+    static newInstance(id, name, admin){
+        return new User(id, name, admin);
     }
 
     toJson(){
