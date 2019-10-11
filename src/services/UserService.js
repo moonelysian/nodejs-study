@@ -12,6 +12,11 @@ class UserService{
         
         return user;
     }
+
+    find(){
+        const users = this.userRepository.find();
+        return todos.map(todos => User.fromData(todos));
+    }
     
     findById(id){
         const user = User.fromData(this.userRepository.findById(id));
@@ -21,7 +26,6 @@ class UserService{
     update(id, data){
         const user = User.fromData(this.userRepository.findById(id));
         
-        user.name = data.name || user.name;
         user.block = data.block || user.block;
         user.waiting = data.waiting || user.waiting;
         
