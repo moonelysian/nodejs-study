@@ -3,6 +3,7 @@ const UserService = require('../services/UserService');
 const createUser = function(req, res){
     const userService = new UserService();
     const body = req.body;
+    console.log(req.body);
     const user = userService.create(body.id, body.name, body.admin);
     res.send({
         data: user.toJson(),

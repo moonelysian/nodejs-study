@@ -12,6 +12,11 @@ class BookService{
         return book;
     }
 
+    find(){
+        const books = this.bookRepository.find();
+        return books.map(todos => Book.fromData(todos));
+    }
+
     findById(id){
         const book = Book.fromData(this.bookRepository.findById(id));
         return book;
