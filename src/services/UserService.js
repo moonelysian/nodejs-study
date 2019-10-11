@@ -15,7 +15,7 @@ class UserService{
 
     find(){
         const users = this.userRepository.find();
-        return todos.map(todos => User.fromData(todos));
+        return users.map(todos => User.fromData(todos));
     }
     
     findById(id){
