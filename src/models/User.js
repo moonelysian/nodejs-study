@@ -1,11 +1,15 @@
 class User{
     
-    constructor(id, name, admin, block=false, waiting=false){
+    constructor(id, name, admin, block=false, waiting){
         this.id = id; //사용자 id
         this.name = name; //사용자 이름
         this.admin = admin; //관리자
         this.block = block; //차단
-        this.waiting = waiting; //대기
+        if(admin==true) // 승인 대기
+            this.waiting = false; 
+        else{
+            this.waiting = true;
+        }
     }
 
     static newInstance(id, name, admin){
