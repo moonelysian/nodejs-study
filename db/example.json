@@ -1,4 +1,40 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "moon",
+      "name": "yeji",
+      "block": false,
+      "waiting": false,
+      "admin": true
+    },
+    {
+      "id": "user1",
+      "name": "user1",
+      "block": true,
+      "waiting": true,
+      "admin": false
+    },
+    {
+      "id": "user2",
+      "name": "user2",
+      "block": false,
+      "waiting": false,
+      "admin": false
+    },
+    {
+      "id": "user3",
+      "name": "user3",
+      "block": false,
+      "waiting": true,
+      "admin": false
+    },
+    {
+      "id": "admin1",
+      "name": "admin1",
+      "block": false,
+      "waiting": false,
+      "admin": true
+    }
+  ],
   "books": []
 }

@@ -7,7 +7,6 @@ const createBook = function(req, res){
     res.send({
         data: book.toJson(),
     });
-
 }
 
 const getBooks = function(req, res){
