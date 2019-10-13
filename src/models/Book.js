@@ -1,3 +1,4 @@
+const shortid = require('shortid');
 class Book{
     constructor (id, title, author, lend=false){
         this.id = id; // 책 번호
@@ -6,7 +7,8 @@ class Book{
         this.lend = lend; // 빌림 여부
     }
 
-    static newInstance(id, title, author){
+    static newInstance(title, author){
+        const id = shortid.generate();
         return new Book(id, title, author);
     }
 

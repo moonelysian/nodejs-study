@@ -1,8 +1,9 @@
-const moment = require("moment");
-
+const moment = require('moment');
+const shortid =  require('shortid');
 class Borrow {
 
-    constructor(userId, bookId, start, end){
+    constructor(id, userId, bookId, start, end){
+        this.id = id;
         this.userId = userId;
         this.bookId = bookId;
         this.start = start;
@@ -10,9 +11,10 @@ class Borrow {
     }
 
     static newInstance(userId, bookId){
+        const id = shortid.generate();
         const start = moment().format('YYYY-MM-DD');
-        const end = moment(start).add(7 , 'days').format('YYYY-MM-DD');
-        return new Borrow(userId, bookId, start, end);
+        const end = moment().add(7 , 'days').format('YYYY-MM-DD');
+        return new Borrow(id, userId, bookId, start, end);
     }
 
     toJSON(){
@@ -25,7 +27,7 @@ class Borrow {
     }
 
     static formData(data){
-        return new Borrow(data.userId, data.bookId, data.start, data.end);
+        return new Borrow(data.id, data.userId, data.bookId, data.start, data.end);
     }
 
 }

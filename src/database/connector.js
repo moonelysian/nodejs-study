@@ -6,5 +6,6 @@ const db = low(adapter);
 
 db.defaults({ users: [] }).write();
 db.defaults({ books: [] }).write();
+db.defaults({ borrow: [] }).write();
 
 module.exports = db;
