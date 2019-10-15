@@ -15,7 +15,7 @@ const getUsers = function(req, res){
     const users = userService.find();
     res.send({
         data: users,
-    })
+    });
 }
 
 const getUser = function(req, res){

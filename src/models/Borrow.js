@@ -17,8 +17,9 @@ class Borrow {
         return new Borrow(id, userId, bookId, start, end);
     }
 
-    toJSON(){
+    toJson(){
         return {
+            id: this.id,
             userId: this.userId,
             bookId: this.bookId,
             start: this.start,
@@ -31,3 +32,5 @@ class Borrow {
     }
 
 }
+
+module.exports = Borrow;

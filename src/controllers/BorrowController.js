@@ -1,4 +1,4 @@
-const BorrowService = require('../services/BookService');
+const BorrowService = require('../services/BorrowService');
 const moment = require('moment');
 
 const createBorrow = function(req, res){
@@ -11,27 +11,44 @@ const createBorrow = function(req, res){
     });
 }
 
+//전체목록
 const getBorrowList = function(req, res){
     const borrowService = new BorrowService();
-    const borrows = borrowService.find();
-
+    const borrow = borrowService.find();
     res.send({
-        data: borrows,
+        data: borrow,
     });
 }
 
-const getBorrow = function(){
-    
+//borrow id로 찾기
+const getBorrow = function(req, res){
+    const borrowService = new BorrowService();
+    const borrow = borrowService.findById(req.params.borrow);
+    console.log(req.params.borrow);
+    res.send({
+        data: borrow,
+    });
 }
 
-const getListByUserID = function(){
-
+//user가 빌린 책 목록
+const getListByUserID = function(req, res){
+    const borrowService = new BorrowService();
+    const borrowList = borrowService.findByUserId(req.params.user)
+    res.send({
+        data: borrowList,
+    })
 }
 
-const getListByBookID = function(){
-
+//책 빌린 사람
+const getListByBookID = function(req, res){
+    const borrowService = new BorrowService();
+    const borrowList = borrowService.findByBookId(req.params.book)
+    res.send({
+        data: borrowList,
+    })
 }
 
+//대여기간 연장
 const updateDue = function(req, res){
     const borrowService = new BorrowService();
     const data = {
@@ -44,6 +61,7 @@ const updateDue = function(req, res){
     });
 }
 
+//책 반납
 const deleteBorrow = function(req, res){
     const borrowService = new BorrowService();
     borrowService.delete(req.params.borrow);

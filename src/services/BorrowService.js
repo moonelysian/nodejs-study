@@ -1,8 +1,5 @@
 const BorrowRepository = require('../database/repositories/BorrowRepository');
 const Borrow = require('../models/Borrow');
-
-
-
 class BorrowService{
     constructor(){
         this.borrowRepository = new BorrowRepository();
@@ -29,14 +26,14 @@ class BorrowService{
 
     // 특정 사용자가 빌린 책 목록
     findByUserId(userId){
-        const borrowList = Borrow.formData(this.borrowRepository.findByUserId(userId));
-        return borrowList;
+        const borrowList = this.borrowRepository.findByUserId(userId);
+        return borrowList.map(borrowList => Borrow.formData(borrowList));
     }
 
     // 특정 책을 빌린 사용자 목록
     findByBookId(bookId){
-        const borrowList = Borrow.formData(this.borrowRepository.findBookId(bookId));
-        return borrowList;
+        const borrowList = this.borrowRepository.findByBookId(bookId);
+        return borrowList.map(borrowList => Borrow.formData(borrowList));
     }
 
     // 대여기간 연장
