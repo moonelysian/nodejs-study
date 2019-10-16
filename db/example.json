@@ -1,11 +1,8 @@
 {
   "users": [
     {
-      "id": "moon",
-      "name": "yeji",
       "block": false,
-      "waiting": false,
-      "admin": true
+      "waiting": true
     },
     {
       "id": "user1",
@@ -19,7 +16,7 @@
       "name": "user2",
       "block": false,
       "waiting": false,
-      "admin": false
+      "admin": true
     },
     {
       "id": "user3",
@@ -29,48 +26,13 @@
       "admin": false
     },
     {
-      "id": "admin1",
-      "name": "admin1",
+      "id": "moon",
+      "name": "yeji",
       "block": false,
       "waiting": false,
       "admin": true
     }
   ],
-  "books": [
-    {
-      "id": "7WuSCwIl",
-      "title": "개미",
-      "author": "베르나르",
-      "lend": false
-    },
-    {
-      "id": "5JDPRhbj",
-      "title": "흥부전",
-      "author": "작자미상",
-      "lend": false
-    }
-  ],
-  "borrow": [
-    {
-      "id": "wQWE8lc3",
-      "userId": "user2",
-      "bookId": "5JDPRhbj",
-      "start": "2019-10-15",
-      "end": "2019-10-22"
-    },
-    {
-      "id": "Z3q_hfA1",
-      "userId": "user1",
-      "bookId": "5JDPRhbj",
-      "start": "2019-10-15",
-      "end": "2019-10-22"
-    },
-    {
-      "id": "qIc_buVa",
-      "userId": "user1",
-      "bookId": "7WuSCwIl",
-      "start": "2019-10-15",
-      "end": "2019-10-22"
-    }
-  ]
+  "books": [],
+  "borrow": []
 }

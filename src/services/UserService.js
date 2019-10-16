@@ -26,8 +26,8 @@ class UserService{
     update(id, data){
         const user = User.fromData(this.userRepository.findById(id));
         
-        user.block = data.block || user.block;
-        user.waiting = data.waiting || user.waiting;
+        user.block = data.block;
+        user.waiting = data.waiting;
         
         this.userRepository.update(id, user.toJson());
     }

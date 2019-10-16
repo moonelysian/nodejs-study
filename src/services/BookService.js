@@ -27,7 +27,7 @@ class BookService{
         
         book.title = data.name || book.name;
         book.author = data.author || book.author;
-        book.lend = data.lend || book.lend;
+        book.total = data.total || book.total;
         
         this.bookRepository.update(id, book.toJson());
     }
