@@ -27,13 +27,21 @@ class BorrowService{
     // 특정 사용자가 빌린 책 목록
     findByUserId(userId){
         const borrowList = this.borrowRepository.findByUserId(userId);
-        return borrowList.map(borrowList => Borrow.formData(borrowList));
+        const data = []
+        borrowList.forEach(function(element){
+            data.push(element['bookId']);
+        })
+        return { 'bookId' : data }
     }
 
     // 특정 책을 빌린 사용자 목록
     findByBookId(bookId){
         const borrowList = this.borrowRepository.findByBookId(bookId);
-        return borrowList.map(borrowList => Borrow.formData(borrowList));
+        const data = []
+        borrowList.forEach(function(element){
+            data.push(element['userId']);
+        })
+        return { 'userId': data } //borrowList.map(borrowList => Borrow.formData(borrowList));
     }
 
     // 대여기간 연장
