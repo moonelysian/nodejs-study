@@ -3,7 +3,12 @@ const BookService = require('../services/BookService');
 const createBook = function(req, res){
     const bookService = new BookService();
     const body = req.body;
-    const book = bookService.create(body.id, body.name, body.admin);
+    
+    if(body.total == undefined){
+        body.total = 3;
+    }
+    
+    const book = bookService.create(body.title, body.author, body.total);
     res.send({
         data: book.toJson(),
     });
@@ -29,8 +34,7 @@ const updateBook = function(req, res){
     const bookService = new BookService();
     const body = req.body;
     const data = {
-        block: body.block,
-        waiting: body.waiting,
+        total: body.total,
     };
 
     const book = bookService.update(req.params.book, data);

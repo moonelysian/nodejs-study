@@ -7,7 +7,6 @@ const moment = require('moment');
 const createBorrow = function(req, res){
     const borrowService = new BorrowService();
     const body = req.body;
-
     const userInfo = getUserInformation(body.userId)
 
     // 차단, 대기 중인 user는 책 못 빌림
@@ -21,12 +20,21 @@ const createBorrow = function(req, res){
 
     else{
         const borrow = borrowService.create(body.userId, body.bookId);
-        res.send({
-            data: borrow.toJson(),
-        });
+        const type = 'create';
+
+        if ( setBookTotal(type, body.bookId) ){
+            res.send({
+                data: borrow.toJson(),
+            });
+        }
+
+        else{
+            res.send({
+                data: "재고가 없는 책입니다"
+            })
+        }
+       
     }
-    // const type = 'create';
-    // setBookTotal(type, body.bookId);
 }
 
 //전체목록
@@ -104,7 +112,6 @@ const deleteBorrow = function(req, res){
     const borrowService = new BorrowService();
 
     const type ='delete'
-    console.log(req.params.borrow);
 
     borrowService.delete(req.params.borrow);
     res.send({
@@ -126,19 +133,32 @@ let getBookInformation = function(id){
     return book;
 }
 
-// 책이 없으면 못 빌리게
-// let setBookTotal = function(type, id){
-//     const bookService = new BookService();
-//     const book = bookService.findById(id);
 
-//     if(type == 'create'){
+let setBookTotal = function(type, id){
 
-//     }
+    console.log("IN")
+
+    const bookService = new BookService();
+    const book = bookService.findById(id);
+
+    // 재고 없으면 못 빌림
+    if(type == 'create'){
+        if(book.total==0){
+            return false
+        }
+        else{
+            book.total -= 1
+            const data = { total: book.total }
+            bookService.update(id, data)
+            return true
+        }
+    }
     
-//     if(type == 'delete'){
-
-//     }
-// }
+    //반납시 재고 늘리기
+    if(type == 'delete'){
+        console.log('delete')
+    }
+}
 
 module.exports = {
     createBorrow,

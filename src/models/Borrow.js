@@ -31,15 +31,6 @@ class Borrow {
         return new Borrow(data.id, data.userId, data.bookId, data.start, data.end);
     }
 
-    static relation(data){
-        return {
-            'link': 'localhost:4000/books/' + data.bookId,
-            'data': {
-                
-            }
-        }
-    }
-
 }
 
 module.exports = Borrow;
